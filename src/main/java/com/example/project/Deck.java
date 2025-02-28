@@ -2,6 +2,7 @@ package com.example.project;
 import java.util.ArrayList;
 import java.util.Collections;
 
+// EXTRA CREDIT
 public class Deck{
     private ArrayList<Card> cards;
 
