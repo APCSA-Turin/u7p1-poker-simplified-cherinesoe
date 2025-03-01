@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class Player{
     private ArrayList<Card> hand;
     private ArrayList<Card> allCards; //the current community cards + hand
+    private boolean handCreated = false;
+    private boolean highInComm = false;
     String[] suits  = Utility.getSuits();
     String[] ranks = Utility.getRanks();
     
@@ -26,10 +28,48 @@ public class Player{
     // returns best hand player has
     public String playHand(ArrayList<Card> communityCards){
         String handType = "";
-        for (Card card : communityCards) {
-            allCards.add(card);
+        if (!handCreated) {
+            for (Card card : communityCards) {
+                allCards.add(card);
+            }
+            sortAllCards();
+            handCreated = true;
+            for (Card card : communityCards) {
+                if (allCards.get(4).equals(card)) {
+                    highInComm = true;
+                }
+            }
+            
         }
-        sortAllCards();
+        System.out.println(allCards);
+        if (allSameSuit()) {
+            if (sequential()) {
+                if (allCards.get(0).getRank().equals("10")) {
+                    handType = "Royal Flush";
+                } else {
+                    handType = "Straight Flush";
+                }
+            } else {
+                handType = "Flush";
+            }
+        } else if (sequential()) {
+            handType = "Straight";
+        } else if (quad()) {
+            handType = "Four of a Kind";
+        } else if (triple()) {
+            handType = "Three of a Kind";
+            if (pair()) {
+                handType = "Full House";
+            }
+        } else if (twoPair()) {
+            handType = "Two Pair";
+        } else if (pair()) {
+            handType = "A Pair";
+        } else if (!highInComm){
+            handType = "High Card";
+        } else {
+            handType = "Nothing";
+        }
 
         return handType;
     }
@@ -78,13 +118,77 @@ public class Player{
     }
    
     public boolean allSameSuit() {
-        ArrayList<Integer> freqOfSuits = findRankingFrequency();
+        ArrayList<Integer> freqOfSuits = findSuitFrequency();
         for (int num : freqOfSuits) {
             if (num == 5) {
                 return true;
-            } else {
-                return false;
             }
+        }
+        return false;
+    }
+
+    public boolean sequential() {
+        ArrayList<Integer> freqOfCard = findRankingFrequency();
+        boolean seq = false;
+        for (int i = 0; i < freqOfCard.size() - 4; i++) {
+            int count = 0;
+            for (int j = i; j < i + 4; j++) {
+                if (freqOfCard.get(j + 1) == 1 && freqOfCard.get(j) == 1) {
+                    count++;
+                    seq = true;
+                }
+                if (count == 4) {
+                    return true;
+                } else {
+                    seq = false;
+                }
+            }
+        }
+        return seq;
+    }
+
+    public boolean quad() {
+        ArrayList<Integer> freqOfCard = findRankingFrequency();
+        for (int num : freqOfCard) {
+            if (num == 4) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean triple() {
+        ArrayList<Integer> freqOfCard = findRankingFrequency();
+        for (int num : freqOfCard) {
+            if (num == 3) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean pair() {
+        ArrayList<Integer> freqOfCard = findRankingFrequency();
+        for (int num : freqOfCard) {
+            if (num == 2) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean twoPair() {
+        ArrayList<Integer> freqOfCard = findRankingFrequency();
+        int count = 0;
+        for (int num : freqOfCard) {
+            if (num == 2) {
+                count++;
+            }
+        }
+        if (count == 2) {
+            return true;
+        } else {
+            return false;
         }
     }
 

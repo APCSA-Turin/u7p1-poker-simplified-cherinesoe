@@ -57,5 +57,18 @@ public class Utility{
         return -1;
     }
 
+    public static int getTop(Player p) {
+        ArrayList<Card> cards = p.getAllCards();
+        return Utility.getRankValue(cards.get(4).getRank());
+    }
+
+    public static int getTotalValue(Player p) {
+        ArrayList<Card> cards = p.getAllCards();
+        int total = 0;
+        for (Card card : cards) {
+            total += getRankValue(card.getRank());
+        }
+        return total;
+    }
 
 }

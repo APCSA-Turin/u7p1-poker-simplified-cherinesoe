@@ -6,17 +6,14 @@ public class Main {
     public static void main(String[] args) {
         Player player = new Player();
         player.addCard(new Card("3", "♠"));
-        player.addCard(new Card("5", "♣"));
+        player.addCard(new Card("6", "♦"));
         
-        // Add community cards (3 cards in total for this example)
+        // Community Cards
         ArrayList<Card> communityCards = new ArrayList<>();
-        communityCards.add(new Card("4", "♠"));
-        communityCards.add(new Card("8", "♣"));
-        communityCards.add(new Card("A", "♦"));
+        communityCards.add(new Card("5", "♣"));
+        communityCards.add(new Card("2", "♠"));
+        communityCards.add(new Card("A", "♠"));
 
-        player.playHand(communityCards);
-        System.out.println(player.getAllCards());
-        player.sortAllCards();
-        System.out.println(player.findSuitFrequency());
+        System.out.println(player.playHand(communityCards));
     }
 }
