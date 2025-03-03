@@ -41,7 +41,6 @@ public class Player{
             }
             
         }
-        System.out.println(allCards);
         if (allSameSuit()) {
             if (sequential()) {
                 if (allCards.get(0).getRank().equals("10")) {
