@@ -79,6 +79,7 @@ public class Game{
                 String p1Result = p1.playHand(communityCards);
                 String p2Result = p2.playHand(communityCards);
 
+                // prints players and community cards along with winner of game
                 System.out.println("Player 1's Hand: " + p1.getHand() + " " + p1.playHand(communityCards));
                 System.out.println("Player 2's Hand: " + p2.getHand() + " " + p2.playHand(communityCards));
                 System.out.println("Community Cards: " + communityCards);
@@ -87,7 +88,7 @@ public class Game{
             } else {
                 playing = false;
             }
-            System.out.println("");
+            System.out.println();
         }
         System.out.println("Goodbye!");
     }

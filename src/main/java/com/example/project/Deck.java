@@ -18,7 +18,8 @@ public class Deck{
         return cards;
     }
 
-    public void initializeDeck(){ //hint.. use the utility class
+    // adds one of every rank and suit to cards
+    public void initializeDeck(){ 
         for (int i = 0; i < suits.length; i++) {
             for (int j = 0; j < ranks.length; j++) {
                 cards.add(new Card(ranks[j], suits[i]));
@@ -30,6 +31,7 @@ public class Deck{
         Collections.shuffle(cards);
     }
 
+    // generates random card from deck and then removes it
     public Card drawCard(){
         int randCard = (int) (Math.random() * cards.size());
         Card card = cards.get(randCard);

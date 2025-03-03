@@ -28,6 +28,7 @@ public class Player{
     // returns best hand player has
     public String playHand(ArrayList<Card> communityCards){
         String handType = "";
+        // makes sure to only add community cards once and checks if highest card is in community cards
         if (!handCreated) {
             for (Card card : communityCards) {
                 allCards.add(card);
