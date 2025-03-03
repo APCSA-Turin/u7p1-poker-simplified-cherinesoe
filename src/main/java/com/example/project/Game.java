@@ -13,7 +13,7 @@ public class Game{
             return "Player 2 wins!";
         } else {
             if (p1Rank == p2Rank) {
-                if (p1Rank == 7) {
+                if (p1Rank == 7 || p1Rank == 3) {
                     int p1TopCard = Utility.getTop(p1);
                     int p2TopCard = Utility.getTop(p2);
                     if (p1TopCard < p2TopCard) {
@@ -23,15 +23,16 @@ public class Game{
                     } else {
                         return "Tie!";
                     }
-                }
-                int p1Total = Utility.getTotalValue(p1);
-                int p2Total = Utility.getTotalValue(p2);
-                if (p1Total < p2Total) {
-                    return "Player 2 wins!";
-                } else if (p1Total > p2Total) {
-                    return "Player 1 wins!";
                 } else {
-                    return "Tie!";
+                    int p1Total = Utility.getTotalValue(p1);
+                    int p2Total = Utility.getTotalValue(p2);
+                    if (p1Total < p2Total) {
+                        return "Player 2 wins!";
+                    } else if (p1Total > p2Total) {
+                        return "Player 1 wins!";
+                    } else {
+                        return "Tie!";
+                    }
                 }
             }
         }
