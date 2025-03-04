@@ -74,6 +74,7 @@ public class Player{
         return handType;
     }
 
+<<<<<<< HEAD
     // sorts hand from lowest to highest DONE
     public void sortAllCards(){
         for (int i = 1; i < allCards.size(); i++) {
@@ -86,6 +87,9 @@ public class Player{
             }
         }
     } 
+=======
+    public void sortAllCards(){} 
+>>>>>>> upstream/main
 
     // use utility class to compare indexes DONE
     public ArrayList<Integer> findRankingFrequency(){
