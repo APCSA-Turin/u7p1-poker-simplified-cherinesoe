@@ -282,12 +282,7 @@ public class TestGame {
         assertEquals("Player 2 wins!", winner);
     }   
 
-<<<<<<< HEAD
-    
-    @Test // A pair in the community cards, find the highest card. 
-=======
        @Test // A pair in the community cards, find the highest card. 
->>>>>>> upstream/main
     public void testPairDrawHighCard_Player2Wins() {
         Player player1 = new Player();
         Player player2 = new Player();
