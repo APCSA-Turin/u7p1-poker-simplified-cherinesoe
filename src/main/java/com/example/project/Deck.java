@@ -26,7 +26,8 @@ public class Deck{
             }
         }
     }
-
+    
+    // randomly rearranges deck of cards
     public void shuffleDeck(){ //You can use the Collections library or another method. You do not have to create your own shuffle algorithm
         Collections.shuffle(cards);
     }

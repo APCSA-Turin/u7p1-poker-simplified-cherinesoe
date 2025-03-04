@@ -74,7 +74,6 @@ public class Player{
         return handType;
     }
 
-<<<<<<< HEAD
     // sorts hand from lowest to highest DONE
     public void sortAllCards(){
         for (int i = 1; i < allCards.size(); i++) {
@@ -87,9 +86,6 @@ public class Player{
             }
         }
     } 
-=======
-    public void sortAllCards(){} 
->>>>>>> upstream/main
 
     // use utility class to compare indexes DONE
     public ArrayList<Integer> findRankingFrequency(){
@@ -121,6 +117,7 @@ public class Player{
         return freq; 
     }
    
+    // checks if all cards are the same suit
     public boolean allSameSuit() {
         ArrayList<Integer> freqOfSuits = findSuitFrequency();
         for (int num : freqOfSuits) {
@@ -151,6 +148,7 @@ public class Player{
         return seq;
     }
 
+    // checks if there are 4 of any card
     public boolean quad() {
         ArrayList<Integer> freqOfCard = findRankingFrequency();
         for (int num : freqOfCard) {
@@ -161,6 +159,7 @@ public class Player{
         return false;
     }
 
+    // checks if there are 3 of any card
     public boolean triple() {
         ArrayList<Integer> freqOfCard = findRankingFrequency();
         for (int num : freqOfCard) {
@@ -171,6 +170,7 @@ public class Player{
         return false;
     }
 
+    // checks if there is 2 of any card
     public boolean pair() {
         ArrayList<Integer> freqOfCard = findRankingFrequency();
         for (int num : freqOfCard) {
@@ -181,6 +181,7 @@ public class Player{
         return false;
     }
 
+    // checks if there are 2 pairs  
     public boolean twoPair() {
         ArrayList<Integer> freqOfCard = findRankingFrequency();
         int count = 0;
